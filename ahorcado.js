@@ -80,8 +80,20 @@ Ahorcado.prototype.dibujar = function ()
 					{
 						//intentos = 5 --> mori
 						dibujo.beginPath();
+						//ojo izquierdo
 						dibujo.moveTo(125,120);
 						dibujo.lineTo(145,145);
+						dibujo.moveTo(145,120);
+						dibujo.lineTo(125,145);
+
+						//ojo derecho
+						dibujo.moveTo(155,120);
+						dibujo.lineTo(175,145);
+						dibujo.moveTo(175,120);
+						dibujo.lineTo(155,145);
+						dibujo.strokeStyle="blue";
+						dibujo.lineWidth=5;
+						dibujo.stroke();
 						dibujo.closePath();
 					}
 				}
@@ -97,6 +109,7 @@ Ahorcado.prototype.trazar = function()
 	this.intentos++;
 	if (this.intentos >= this.maximo) {
 		this.vivo = false;
+		alert("Estas Muerto!!!");
 	}
 
 	this.dibujar();
@@ -114,6 +127,7 @@ function iniciar()
 	hombre.trazar();
 	hombre.trazar();
 	hombre.trazar();
+	
 
  
 	
