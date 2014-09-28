@@ -1,5 +1,5 @@
-var palabra = "Tamarindo";
-var hombre;
+var palabra = "Amoxicilina";
+var hombre, l, espacio;
 
 //Declaracion de la clase Ahorcado
 var Ahorcado = function(con)
@@ -118,17 +118,52 @@ Ahorcado.prototype.trazar = function()
 
 function iniciar()
 {
+	l         = document.getElementById('letra');
+	var b         = document.getElementById('boton');
 	var canvas    = document.getElementById('c');
 	canvas.width  = 500;
 	canvas.height = 400;
 	var contexto  = canvas.getContext('2d');
 	hombre        = new Ahorcado(contexto);
-	hombre.trazar();
-	hombre.trazar();
-	hombre.trazar();
-	hombre.trazar();
+
+	//convierte en mayuscula
+	palabra = palabra.toUpperCase();
+
+    //declaro un array con N espacios de acuerdo al largo de la palabra
+	espacio = new Array(palabra.length);
+
 	
 
- 
+  //Agregamos una funcion que se dispare al dar click al boton
+
+
+    b.addEventListener("click", agregarLetra);
+
+    //mostrarPista(palabra, espacio);
+
 	
+}
+
+function agregarLetra()
+{
+	var letra = l.value;
+	
+	mostrarPalabra(palabra, hombre, letra);
+	
+}
+
+function mostrarPalabra(palabra, ahorcado, letra)
+{
+	letra = letra.toUpperCase();
+	// var pista = document.getElementById('pista');
+	// var texto = "";
+
+}
+
+
+function mostrarPista(palabra, espacio)
+{
+	var pista = document.getElementById('pista');
+	var texto = "";
+
 }
