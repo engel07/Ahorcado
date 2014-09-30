@@ -1,4 +1,4 @@
-var palabra = "Amoxicilina";
+var palabra = "Accesibilidad";
 var hombre, l, espacio;
 
 //Declaracion de la clase Ahorcado
@@ -118,7 +118,7 @@ Ahorcado.prototype.trazar = function()
 
 function iniciar()
 {
-	l         = document.getElementById('letra');
+	l             = document.getElementById('letra');
 	var b         = document.getElementById('boton');
 	var canvas    = document.getElementById('c');
 	canvas.width  = 500;
@@ -141,29 +141,76 @@ function iniciar()
 
     //mostrarPista(palabra, espacio);
 
+   
+    mostrarPista(espacio);
+
 	
 }
 
 function agregarLetra()
 {
 	var letra = l.value;
-	
+	l.value= "";
 	mostrarPalabra(palabra, hombre, letra);
 	
 }
 
 function mostrarPalabra(palabra, ahorcado, letra)
 {
+	var encontrado = false;
+	var p;
 	letra = letra.toUpperCase();
-	// var pista = document.getElementById('pista');
-	// var texto = "";
+	for (p in palabra)
+	{
+		if (letra == palabra[p])
+		{
+			espacio[p] = letra;
+			encontrado = true;
+		}
+	}
 
+	mostrarPista(espacio);
+
+	if(!encontrado)
+	{
+		ahorcado.trazar();
+
+	}
+
+	if (!ahorcado.vivo)
+	{
+		//mostrar la palabra entera
+	}
+
+
+	
 }
 
 
-function mostrarPista(palabra, espacio)
+function mostrarPista(espacio)
 {
 	var pista = document.getElementById('pista');
 	var texto = "";
+	var i;
+	var largo = espacio.length;
+
+	for(i = 0; i<largo; i++)
+	{
+		if (espacio[i]  !== undefined) {
+
+			texto = texto + espacio[i] + " ";
+
+
+		}
+
+		else
+			{
+				
+			  texto += "_ ";
+			}
+
+		pista.innerText = texto;
+		
+	}
 
 }
